@@ -68,7 +68,15 @@ namespace StarterAssets
 
 		private void OnApplicationFocus(bool hasFocus)
 		{
-			SetCursorState(cursorLocked);
+			if (Application.isEditor)
+            {
+				SetCursorState(false);
+			}
+			else
+            {
+				SetCursorState(cursorLocked);
+			}
+			
 		}
 
 		private void SetCursorState(bool newState)

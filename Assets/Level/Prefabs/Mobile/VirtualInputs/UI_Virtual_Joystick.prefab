@@ -170,6 +170,7 @@ MonoBehaviour:
   magnitudeMultiplier: 1
   invertXOutputValue: 0
   invertYOutputValue: 0
+  thresholdRatio: 0.5
   joystickOutputEvent:
     m_PersistentCalls:
       m_Calls:
@@ -185,6 +186,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  joystickThresholdEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &3199668076469712371
 GameObject:
   m_ObjectHideFlags: 0

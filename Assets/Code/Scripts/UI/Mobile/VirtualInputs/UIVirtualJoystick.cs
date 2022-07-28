@@ -6,6 +6,8 @@ public class UIVirtualJoystick : MonoBehaviour, IPointerDownHandler, IDragHandle
 {
     [System.Serializable]
     public class Event : UnityEvent<Vector2> { }
+    [System.Serializable]
+    public class BoolEvent : UnityEvent<bool> { }
     
     [Header("Rect References")]
     public RectTransform containerRect;
@@ -16,13 +18,23 @@ public class UIVirtualJoystick : MonoBehaviour, IPointerDownHandler, IDragHandle
     public float magnitudeMultiplier = 1f;
     public bool invertXOutputValue;
     public bool invertYOutputValue;
+    public float thresholdRatio = 0.5f;
 
     [Header("Output")]
     public Event joystickOutputEvent;
+    public BoolEvent joystickThresholdEvent;
 
     void Start()
     {
         SetupHandle();
+    }
+
+    void OnDisable()
+    {
+        if (joystickThresholdEvent != null)
+        {
+            joystickThresholdEvent.Invoke(false);
+        }
     }
 
     private void SetupHandle()
@@ -44,12 +56,24 @@ public class UIVirtualJoystick : MonoBehaviour, IPointerDownHandler, IDragHandle
         RectTransformUtility.ScreenPointToLocalPointInRectangle(containerRect, eventData.position, eventData.pressEventCamera, out Vector2 position);
         
         position = ApplySizeDelta(position);
-        
+
         Vector2 clampedPosition = ClampValuesToMagnitude(position);
 
         Vector2 outputPosition = ApplyInversionFilter(position);
 
         OutputPointerEventValue(outputPosition * magnitudeMultiplier);
+
+        if (joystickThresholdEvent != null)
+        {
+            if (Mathf.Abs(position.x) >= thresholdRatio || Mathf.Abs(position.y) >= thresholdRatio)
+            {
+                joystickThresholdEvent.Invoke(true);
+            }
+            else
+            {
+                joystickThresholdEvent.Invoke(false);
+            }
+        }
 
         if(handleRect)
         {

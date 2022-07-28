@@ -14,6 +14,12 @@ namespace StarterAssets
 
         public void OnPointerDown(PointerEventData eventData)
         {
+            bool isRightMouseInEditor = Application.isEditor && eventData.button != PointerEventData.InputButton.Right;
+            if (isRightMouseInEditor)
+            {
+                return;
+            }
+
             joystick.transform.position = eventData.position;
             joystick.SetActive(true);
             joystick.SendMessage("OnPointerDown", eventData);
@@ -21,13 +27,19 @@ namespace StarterAssets
 
         public void OnPointerUp(PointerEventData eventData)
         {
-            joystick.SendMessage("OnPointerUp", eventData);
-            joystick.SetActive(false);
+            if (joystick.activeSelf)
+            {
+                joystick.SendMessage("OnPointerUp", eventData);
+                joystick.SetActive(false);
+            }
         }
 
         public void OnDrag(PointerEventData eventData)
         {
-            joystick.SendMessage("OnDrag", eventData);
+            if (joystick.activeSelf)
+            {
+                joystick.SendMessage("OnDrag", eventData);
+            }
         }
     }
 }

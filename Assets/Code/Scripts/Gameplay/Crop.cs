@@ -13,26 +13,28 @@ public class Crop : MonoBehaviour
     public CropConfig config;
     public CropState state = CropState.Growned;
 
-    private void Start()
-    {
-
-    }
+    private float timeGathered;
 
     private void Update()
     {
         UpdateCropStateTransitions();
-        UpdateCropState();
         UpdateSizeBasedOnState();
     }
 
     private void UpdateCropStateTransitions()
     {
-
-    }
-
-    private void UpdateCropState()
-    {
-
+        switch (state)
+        {
+            case CropState.Gathered:
+                state = CropState.Growing;
+                break;
+            case CropState.Growing:
+                if (Time.time - timeGathered >= config.fullGrowTime)
+                {
+                    state = CropState.Growned;
+                }
+                break;
+        }
     }
 
     private void UpdateSizeBasedOnState()
@@ -45,11 +47,15 @@ public class Crop : MonoBehaviour
             case CropState.Sliced:
                 transform.localScale = config.slicedStateScale;
                 break;
-            case CropState.Gathered:
-                transform.localScale = config.gatheredStateScale;
-                break;
             case CropState.Growing:
-                transform.localScale = config.growingStateScale;
+                if (Time.time - timeGathered >= config.visibleGrowingDelay)
+                {
+                    transform.localScale = config.growingStateScale;
+                }
+                else
+                {
+                    transform.localScale = Vector3.zero;
+                }
                 break;
         }
     }
@@ -63,6 +69,7 @@ public class Crop : MonoBehaviour
                 break;
             case CropState.Sliced:
                 state = CropState.Gathered;
+                timeGathered = Time.time;
                 break;
         }
     }

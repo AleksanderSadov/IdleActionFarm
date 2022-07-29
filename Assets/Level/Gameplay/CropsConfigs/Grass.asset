@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: Grass
   m_EditorClassIdentifier: 
   fullGrowTime: 4
-  visibleGrowingDelay: 1
+  smallGrowingDelay: 2
+  animationSmallGrowingSpeed: 1
+  animationFullGrowingSpeed: 0.4
   grownedStateScale: {x: 6, y: 6, z: 6}
   slicedStateScale: {x: 4, y: 4, z: 4}
-  gatheredStateScale: {x: 0, y: 0, z: 0}
   growingStateScale: {x: 2, y: 2, z: 2}

@@ -1,3 +1,4 @@
+using DG.Tweening;
 using UnityEngine;
 
 public class Crop : MonoBehaviour
@@ -42,19 +43,31 @@ public class Crop : MonoBehaviour
         switch (state)
         {
             case CropState.Growned:
-                transform.localScale = config.grownedStateScale;
+                if (transform.localScale != config.grownedStateScale && !DOTween.IsTweening(transform))
+                {
+                    transform.DOScale(config.grownedStateScale, config.animationFullGrowingSpeed);
+                }
                 break;
             case CropState.Sliced:
-                transform.localScale = config.slicedStateScale;
+                if (transform.localScale != config.slicedStateScale)
+                {
+                    transform.localScale = config.slicedStateScale;
+                }
                 break;
             case CropState.Growing:
-                if (Time.time - timeGathered >= config.visibleGrowingDelay)
+                if (Time.time - timeGathered >= config.smallGrowingDelay)
                 {
-                    transform.localScale = config.growingStateScale;
+                    if (transform.localScale != config.growingStateScale && !DOTween.IsTweening(transform))
+                    {
+                        transform.DOScale(config.growingStateScale, config.animationSmallGrowingSpeed);
+                    }
                 }
                 else
                 {
-                    transform.localScale = Vector3.zero;
+                    if (transform.localScale != Vector3.zero)
+                    {
+                        transform.localScale = Vector3.zero;
+                    }
                 }
                 break;
         }

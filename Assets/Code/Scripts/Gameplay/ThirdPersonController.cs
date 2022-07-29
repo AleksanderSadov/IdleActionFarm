@@ -98,6 +98,8 @@ namespace StarterAssets
         private int _animIDGather;
         private int _animIDFreeFall;
         private int _animIDMotionSpeed;
+        private int _animIDGatheringState;
+        private int _animIndexLayerGatherCrop = 1;
 
 #if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
         private PlayerInput _playerInput;
@@ -168,6 +170,11 @@ namespace StarterAssets
             CameraRotation();
         }
 
+        public bool IsGathering()
+        {
+            return _hasAnimator && _animator.GetCurrentAnimatorStateInfo(_animIndexLayerGatherCrop).fullPathHash.Equals(_animIDGatheringState);
+        }
+
         private void AssignAnimationIDs()
         {
             _animIDSpeed = Animator.StringToHash("Speed");
@@ -176,6 +183,7 @@ namespace StarterAssets
             _animIDGather = Animator.StringToHash("Gather");
             _animIDFreeFall = Animator.StringToHash("FreeFall");
             _animIDMotionSpeed = Animator.StringToHash("MotionSpeed");
+            _animIDGatheringState = Animator.StringToHash("GatherCrop.Gathering");
         }
 
         private void GroundedCheck()

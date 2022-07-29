@@ -16,6 +16,13 @@ public class Crop : MonoBehaviour
 
     private float timeGathered;
     private Quaternion originalRotation;
+
+    private Vector3 originalGrownedStateScale;
+    private Vector3 grownedStateScale;
+    private Vector3 slicedStateScale;
+    private Vector3 growingStateScale;
+    private Vector3 randomScaleDeltaAmplitude;
+
     private bool isShakingBackward = true;
     private float windShakeMinimumAmplitude;
     private float windShakeMaximumAmplitude;
@@ -24,10 +31,14 @@ public class Crop : MonoBehaviour
     private void Start()
     {
         originalRotation = transform.rotation;
+        grownedStateScale = config.grownedStateScale;
+        slicedStateScale = config.slicedStateScale;
+        growingStateScale = config.growingStateScale;
     }
 
     private void Update()
     {
+        CheckChangeScale();
         UpdateCropStateTransitions();
         UpdateCropState();
         UpdateSizeBasedOnState();
@@ -68,11 +79,11 @@ public class Crop : MonoBehaviour
         switch (state)
         {
             case CropState.Growned:
-                UpdateWindShakeDelta();
+                CheckChangeWindShakeDelta();
                 ShakeLikeWind();
                 break;
             case CropState.Sliced:
-                UpdateWindShakeDelta();
+                CheckChangeWindShakeDelta();
                 ShakeLikeWind();
                 break;
         }
@@ -83,23 +94,23 @@ public class Crop : MonoBehaviour
         switch (state)
         {
             case CropState.Growned:
-                if (transform.localScale != config.grownedStateScale && !DOTween.IsTweening(transform))
+                if (transform.localScale != grownedStateScale && !DOTween.IsTweening(transform))
                 {
-                    transform.DOScale(config.grownedStateScale, config.animationFullGrowingSpeed);
+                    transform.DOScale(grownedStateScale, config.animationFullGrowingSpeed);
                 }
                 break;
             case CropState.Sliced:
-                if (transform.localScale != config.slicedStateScale)
+                if (transform.localScale != slicedStateScale)
                 {
-                    transform.localScale = config.slicedStateScale;
+                    transform.localScale = slicedStateScale;
                 }
                 break;
             case CropState.Growing:
                 if (Time.time - timeGathered >= config.smallGrowingDelay)
                 {
-                    if (transform.localScale != config.growingStateScale && !DOTween.IsTweening(transform))
+                    if (transform.localScale != growingStateScale && !DOTween.IsTweening(transform))
                     {
-                        transform.DOScale(config.growingStateScale, config.animationSmallGrowingSpeed);
+                        transform.DOScale(growingStateScale, config.animationSmallGrowingSpeed);
                     }
                 }
                 else
@@ -110,6 +121,29 @@ public class Crop : MonoBehaviour
                     }
                 }
                 break;
+        }
+    }
+
+    private void CheckChangeScale()
+    {
+        if (
+            randomScaleDeltaAmplitude != config.randomScaleDeltaAmplitude
+            || originalGrownedStateScale != config.grownedStateScale
+        )
+        {
+            originalGrownedStateScale = config.grownedStateScale;
+            randomScaleDeltaAmplitude = config.randomScaleDeltaAmplitude;
+            grownedStateScale = config.grownedStateScale + config.randomScaleDeltaAmplitude * Random.Range(0f, 1f);
+        }
+
+        if (slicedStateScale != config.slicedStateScale)
+        {
+            slicedStateScale = config.slicedStateScale;
+        }
+
+        if (growingStateScale != config.growingStateScale)
+        {
+            growingStateScale = config.growingStateScale;
         }
     }
 
@@ -132,7 +166,7 @@ public class Crop : MonoBehaviour
         }
     }
 
-    private void UpdateWindShakeDelta()
+    private void CheckChangeWindShakeDelta()
     {
         if (
             windShakeMinimumAmplitude != config.windShakeMinimumAmplitude

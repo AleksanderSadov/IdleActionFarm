@@ -12,10 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d9d540fc0f95ec409bb69a15e0690f4, type: 3}
   m_Name: Grass
   m_EditorClassIdentifier: 
+  grownedStateScale: {x: 6, y: 6, z: 6}
+  slicedStateScale: {x: 4, y: 4, z: 4}
+  growingStateScale: {x: 2, y: 2, z: 2}
+  randomScaleDeltaAmlitude: {x: 1, y: 1, z: 1}
   fullGrowTime: 4
   smallGrowingDelay: 2
   animationSmallGrowingSpeed: 1
   animationFullGrowingSpeed: 0.4
-  grownedStateScale: {x: 6, y: 6, z: 6}
-  slicedStateScale: {x: 4, y: 4, z: 4}
-  growingStateScale: {x: 2, y: 2, z: 2}
+  windShakeSpeed: 3
+  windShakeMinimumAmplitude: 2
+  windShakeMaximumAmplitude: 4

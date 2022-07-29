@@ -3,13 +3,14 @@ using UnityEngine;
 
 public class GatheringTool : MonoBehaviour
 {
-    [SerializeField]
-    private ThirdPersonController player;
+    public GatheringToolConfig config;
 
+    private ThirdPersonController player;
     private MeshRenderer meshRenderer;
 
     private void Start()
     {
+        player = GetComponentInParent<ThirdPersonController>();
         meshRenderer = GetComponent<MeshRenderer>();
     }
 
@@ -20,9 +21,15 @@ public class GatheringTool : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (!other.CompareTag("Crop") || !player.IsGathering())
+        if (
+            !other.CompareTag("Crop")
+            || !player.IsGathering()
+            || player.GetGatheringAnimatorTime() > config.gatheringAnimationRatio
+        )
         {
             return;
         }
+
+        other.GetComponent<Crop>().GatherCrop();
     }
 }

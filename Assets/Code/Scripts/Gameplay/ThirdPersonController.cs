@@ -175,6 +175,18 @@ namespace StarterAssets
             return _hasAnimator && _animator.GetCurrentAnimatorStateInfo(_animIndexLayerGatherCrop).fullPathHash.Equals(_animIDGatheringState);
         }
 
+        public float GetGatheringAnimatorTime()
+        {
+            return GetCurrentAnimatorTime(_animator, _animIndexLayerGatherCrop);
+        }
+
+        private float GetCurrentAnimatorTime(Animator targetAnim, int layer = 0)
+        {
+            AnimatorStateInfo animState = targetAnim.GetCurrentAnimatorStateInfo(layer);
+            float currentTime = animState.normalizedTime % 1;
+            return currentTime;
+        }
+
         private void AssignAnimationIDs()
         {
             _animIDSpeed = Animator.StringToHash("Speed");

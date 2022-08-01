@@ -10,7 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4529102512854249475}
   - component: {fileID: 127785885234421233}
-  m_Layer: 8
+  - component: {fileID: 2715866109747482881}
+  m_Layer: 13
   m_Name: PickupStack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43,4 +44,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47bd1de18806d0c41b789753e3b2409c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  config: {fileID: 11400000, guid: 5e23d5a648348e744b70f0810e04d848, type: 2}
+  config: {fileID: 11400000, guid: dd4d712db48b0424aa8e9571fb916f4c, type: 2}
+  pickupPivot: {fileID: 4529102512854249475}
+--- !u!135 &2715866109747482881
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 886629146520896932}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}

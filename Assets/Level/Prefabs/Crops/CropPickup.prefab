@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 5820958067646118964}
   m_Layer: 10
   m_Name: CropPickup
-  m_TagString: Untagged
+  m_TagString: CropPickup
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

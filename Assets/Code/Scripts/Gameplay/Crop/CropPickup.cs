@@ -3,6 +3,7 @@ using UnityEngine;
 public class CropPickup : MonoBehaviour
 {
     public CropPickupConfig config;
+    public bool isPickingUpInProgress = false;
 
     private Rigidbody rigidBody;
 

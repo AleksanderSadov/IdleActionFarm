@@ -7,6 +7,7 @@ TagManager:
   - CinemachineTarget
   - GatherCropTool
   - Crop
+  - CropPickup
   layers:
   - Default
   - TransparentFX
@@ -21,7 +22,7 @@ TagManager:
   - Pickup
   - Crop
   - GatherCropTool
-  - 
+  - CharacterPickupStack
   - 
   - 
   - 

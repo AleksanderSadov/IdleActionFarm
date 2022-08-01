@@ -10,5 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fd6b0cbca9174cf4baecc2859a20f819, type: 3}
-  m_Name: CharacterConfig
+  m_Name: CharacterPickupStack
   m_EditorClassIdentifier: 
+  poolUpRadius: 1
+  poolUpSpeed: 1
+  pickedUpDistance: 0.1
+  maxStackSize: 10

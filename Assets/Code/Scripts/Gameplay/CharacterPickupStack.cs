@@ -1,11 +1,12 @@
-using DG.Tweening;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class CharacterPickupStack : MonoBehaviour
 {
     public CharacterPickupConfig config;
     public Transform pickupPivot;
+    public List<CropPickup> pickupsStack = new List<CropPickup>();
 
     private void Start()
     {
@@ -14,6 +15,7 @@ public class CharacterPickupStack : MonoBehaviour
 
     public IEnumerator Pickup(CropPickup pickup)
     {
+        pickupsStack.Add(pickup);
         pickup.isPickingUpInProgress = true;
         pickup.GetComponent<Rigidbody>().isKinematic = true;
 
@@ -25,7 +27,8 @@ public class CharacterPickupStack : MonoBehaviour
             if (distance <= config.pickedUpDistance)
             {
                 isPickedUp = true;
-                Destroy(pickup.gameObject);
+                pickup.gameObject.transform.parent = transform;
+                pickup.gameObject.GetComponent<MeshRenderer>().enabled = false;
             }
             else
             {
@@ -56,7 +59,11 @@ public class CharacterPickupStack : MonoBehaviour
         if (other.CompareTag("CropPickup"))
         {
             CropPickup cropPickup = other.GetComponent<CropPickup>();
-            if (cropPickup == null || cropPickup.isPickingUpInProgress)
+            if (
+                pickupsStack.Count >= config.maxStackSize
+                || cropPickup == null
+                || cropPickup.isPickingUpInProgress
+            )
             {
                 return;
             }

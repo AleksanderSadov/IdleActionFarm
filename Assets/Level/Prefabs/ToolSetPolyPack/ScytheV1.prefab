@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6637109127286883281}
   - component: {fileID: 383891874785792213}
   - component: {fileID: 9123459731659366413}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: ScytheV1
   m_TagString: GatherCropTool
   m_Icon: {fileID: 0}
@@ -112,4 +112,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   config: {fileID: 11400000, guid: 8ac6804bbef4a36418ed312e5ce793a5, type: 2}
-  player: {fileID: 0}

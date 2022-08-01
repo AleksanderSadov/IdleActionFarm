@@ -35,6 +35,7 @@ public class Crop : MonoBehaviour
             case CropState.Sliced:
                 state = CropState.Gathered;
                 timeGathered = Time.time;
+                SpawnCropPickup();
                 cropGathered?.Invoke();
                 break;
         }
@@ -89,5 +90,18 @@ public class Crop : MonoBehaviour
                 }
                 break;
         }
+    }
+
+    private void SpawnCropPickup()
+    {
+        Vector3 pickupSize = config.pickupPrefab.transform.localScale;
+
+        CropPickup cropPickup = Instantiate(
+            config.pickupPrefab,
+            new Vector3(transform.position.x, transform.position.y + pickupSize.y / 2, transform.position.z),
+            config.pickupPrefab.transform.rotation
+        );
+
+        cropPickup.SetMaterial(GetComponent<MeshRenderer>().material);
     }
 }

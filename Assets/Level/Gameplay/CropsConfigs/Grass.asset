@@ -16,14 +16,16 @@ MonoBehaviour:
   slicedStateScale: {x: 4, y: 4, z: 4}
   growingStateScale: {x: 2, y: 2, z: 2}
   randomScaleDeltaAmplitude: {x: 0.5, y: 0.5, z: 0.5}
+  fullGrowTime: 10
+  smallGrowingDelay: 2
+  animationSmallGrowingSpeed: 1
+  animationFullGrowingSpeed: 0.4
+  pickupPrefab: {fileID: 5820958067646118964, guid: 10233dfa709a0ec40a8073b3af012b4b,
+    type: 3}
   materials:
   - {fileID: 2100000, guid: ce06999cdf191974cb632f1fb1206e4e, type: 2}
   - {fileID: 2100000, guid: 5de59386af6100742acb9491023bc063, type: 2}
   - {fileID: 2100000, guid: 8e550ba839399d74ea17acb70d1a0131, type: 2}
-  fullGrowTime: 4
-  smallGrowingDelay: 2
-  animationSmallGrowingSpeed: 1
-  animationFullGrowingSpeed: 0.4
   windShakeSpeed: 3
   windShakeMinimumAmplitude: 2
   windShakeMaximumAmplitude: 4

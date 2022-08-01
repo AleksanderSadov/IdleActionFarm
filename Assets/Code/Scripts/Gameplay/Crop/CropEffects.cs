@@ -14,8 +14,15 @@ public class CropEffects : MonoBehaviour
 
     private void Start()
     {
-        Init();
-        InitRandomState();
+        crop = GetComponent<Crop>();
+        config = crop.config;
+        originalRotation = transform.rotation;
+
+        crop.grownedStateScale = config.grownedStateScale + config.randomScaleDeltaAmplitude * Random.Range(0f, 1f);
+        windShakeRandomDelta = Random.Range(config.windShakeMinimumAmplitude, config.windShakeMaximumAmplitude);
+        SetRandomColor();
+
+        crop.cropGathered += OnCropGathered;
     }
 
     private void Update()
@@ -23,17 +30,9 @@ public class CropEffects : MonoBehaviour
         UpdateCropEffects();
     }
 
-    private void Init()
+    private void OnDestroy()
     {
-        crop = GetComponent<Crop>();
-        config = crop.config;
-        originalRotation = transform.rotation;
-    }
-
-    private void InitRandomState()
-    {
-        crop.grownedStateScale = config.grownedStateScale + config.randomScaleDeltaAmplitude * Random.Range(0f, 1f);
-        windShakeRandomDelta = Random.Range(config.windShakeMinimumAmplitude, config.windShakeMaximumAmplitude);
+        crop.cropGathered -= OnCropGathered;
     }
 
     private void UpdateCropEffects()
@@ -46,13 +45,13 @@ public class CropEffects : MonoBehaviour
             case CropState.Sliced:
                 ShakeLikeWind();
                 break;
-            case CropState.Gathered:
-                transform.rotation = originalRotation;
-                break;
-            case CropState.Growing:
-                transform.rotation = originalRotation;
-                break;
         }
+    }
+
+    private void OnCropGathered()
+    {
+        transform.rotation = originalRotation;
+        SetRandomColor();
     }
 
     private void ShakeLikeWind()
@@ -72,5 +71,10 @@ public class CropEffects : MonoBehaviour
         {
             transform.Rotate(Vector3.forward * Time.deltaTime * config.windShakeSpeed);
         }
+    }
+
+    private void SetRandomColor()
+    {
+        crop.GetComponent<MeshRenderer>().material = config.materials[Random.Range(0, config.materials.Length)];
     }
 }

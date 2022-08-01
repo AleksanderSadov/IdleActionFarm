@@ -15,9 +15,8 @@ GameObject:
   - component: {fileID: 2189093912306359390}
   - component: {fileID: 5817483707681754394}
   - component: {fileID: 2794568585842089446}
-  - component: {fileID: -3040577159382718062}
   m_Layer: 0
-  m_Name: CropsGrass
+  m_Name: CropGrass
   m_TagString: Crop
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -64,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 382e2b1b7fbf94945963320a17603c7c, type: 2}
+  - {fileID: 2100000, guid: ce06999cdf191974cb632f1fb1206e4e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -130,11 +129,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   config: {fileID: 11400000, guid: fcf0e41c7eac19b47b4ae6a2456558e8, type: 2}
   state: 0
-  timeGathered: 0
   grownedStateScale: {x: 0, y: 0, z: 0}
-  slicedStateScale: {x: 0, y: 0, z: 0}
-  growingStateScale: {x: 0, y: 0, z: 0}
-  originalRotation: {x: 0, y: 0, z: 0, w: 0}
+  timeGathered: 0
 --- !u!114 &2794568585842089446
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -147,18 +143,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d83288909a036f43943641ef4c4f973, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  windShakeMinimumAmplitude: 0
-  windShakeMaximumAmplitude: 0
   windShakeRandomDelta: 0
---- !u!114 &-3040577159382718062
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6662174415517180126}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3f2de1473204c4249b08b15085c05b17, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

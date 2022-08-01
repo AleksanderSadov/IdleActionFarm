@@ -10,6 +10,10 @@ public class CropConfig : ScriptableObject
     [Tooltip("Change crop scale at small random amplitude to appear more unique")]
     public Vector3 randomScaleDeltaAmplitude = new Vector3(0.5f, 0.5f, 0.5f);
 
+    [Header("Color")]
+    [Tooltip("Possible materials for crop. Single material will be choosed randomly for each crop")]
+    public Material[] materials;
+
     [Header("Growing speed")]
     [Tooltip("Time in seconds crop fully grows back again from gathered state")]
     public float fullGrowTime = 10.0f;

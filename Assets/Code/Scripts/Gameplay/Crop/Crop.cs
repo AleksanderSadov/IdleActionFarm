@@ -1,5 +1,6 @@
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Crop : MonoBehaviour
 {
@@ -15,6 +16,8 @@ public class Crop : MonoBehaviour
     public CropState state = CropState.Growned;
     public Vector3 grownedStateScale;
     public float timeGathered;
+
+    public UnityAction cropGathered;
 
     private void Update()
     {
@@ -32,6 +35,7 @@ public class Crop : MonoBehaviour
             case CropState.Sliced:
                 state = CropState.Gathered;
                 timeGathered = Time.time;
+                cropGathered?.Invoke();
                 break;
         }
     }

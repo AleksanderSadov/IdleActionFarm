@@ -13,20 +13,8 @@ public class Crop : MonoBehaviour
 
     public CropConfig config;
     public CropState state = CropState.Growned;
-    public float timeGathered;
-
     public Vector3 grownedStateScale;
-    public Vector3 slicedStateScale;
-    public Vector3 growingStateScale;
-    public Quaternion originalRotation;
-
-    private void Start()
-    {
-        grownedStateScale = config.grownedStateScale;
-        slicedStateScale = config.slicedStateScale;
-        growingStateScale = config.growingStateScale;
-        originalRotation = transform.rotation;
-    }
+    public float timeGathered;
 
     private void Update()
     {
@@ -75,17 +63,17 @@ public class Crop : MonoBehaviour
                 }
                 break;
             case CropState.Sliced:
-                if (transform.localScale != slicedStateScale)
+                if (transform.localScale != config.slicedStateScale)
                 {
-                    transform.localScale = slicedStateScale;
+                    transform.localScale = config.slicedStateScale;
                 }
                 break;
             case CropState.Growing:
                 if (Time.time - timeGathered >= config.smallGrowingDelay)
                 {
-                    if (transform.localScale != growingStateScale && !DOTween.IsTweening(transform))
+                    if (transform.localScale != config.growingStateScale && !DOTween.IsTweening(transform))
                     {
-                        transform.DOScale(growingStateScale, config.animationSmallGrowingSpeed);
+                        transform.DOScale(config.growingStateScale, config.animationSmallGrowingSpeed);
                     }
                 }
                 else

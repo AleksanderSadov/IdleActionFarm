@@ -4,27 +4,36 @@ using static Crop;
 [RequireComponent(typeof(Crop))]
 public class CropEffects : MonoBehaviour
 {
-    public float windShakeMinimumAmplitude;
-    public float windShakeMaximumAmplitude;
     public float windShakeRandomDelta;
 
     private Crop crop;
     private CropConfig config;
 
     private bool isShakingBackward = true;
+    private Quaternion originalRotation;
 
     private void Start()
     {
-        crop = GetComponent<Crop>();
-        config = crop.config;
-        windShakeMinimumAmplitude = config.windShakeMinimumAmplitude;
-        windShakeMaximumAmplitude = config.windShakeMaximumAmplitude;
-        windShakeRandomDelta = Random.Range(windShakeMinimumAmplitude, windShakeMaximumAmplitude);
+        Init();
+        InitRandomState();
     }
 
     private void Update()
     {
         UpdateCropEffects();
+    }
+
+    private void Init()
+    {
+        crop = GetComponent<Crop>();
+        config = crop.config;
+        originalRotation = transform.rotation;
+    }
+
+    private void InitRandomState()
+    {
+        crop.grownedStateScale = config.grownedStateScale + config.randomScaleDeltaAmplitude * Random.Range(0f, 1f);
+        windShakeRandomDelta = Random.Range(config.windShakeMinimumAmplitude, config.windShakeMaximumAmplitude);
     }
 
     private void UpdateCropEffects()
@@ -38,17 +47,17 @@ public class CropEffects : MonoBehaviour
                 ShakeLikeWind();
                 break;
             case CropState.Gathered:
-                transform.rotation = crop.originalRotation;
+                transform.rotation = originalRotation;
                 break;
             case CropState.Growing:
-                transform.rotation = crop.originalRotation;
+                transform.rotation = originalRotation;
                 break;
         }
     }
 
     private void ShakeLikeWind()
     {
-        float deltaAngle = Mathf.DeltaAngle(transform.rotation.eulerAngles.z, crop.originalRotation.eulerAngles.z);
+        float deltaAngle = Mathf.DeltaAngle(transform.rotation.eulerAngles.z, originalRotation.eulerAngles.z);
 
         if (Mathf.Abs(deltaAngle) >= windShakeRandomDelta)
         {

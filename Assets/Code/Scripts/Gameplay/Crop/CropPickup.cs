@@ -4,6 +4,7 @@ public class CropPickup : MonoBehaviour
 {
     public CropPickupConfig config;
     public bool isPickingUpInProgress = false;
+    public bool isSellingInProgress = false;
 
     private Rigidbody rigidBody;
 

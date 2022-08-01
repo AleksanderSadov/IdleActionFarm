@@ -7,46 +7,16 @@ public class CharacterPickupStack : MonoBehaviour
     public CharacterPickupConfig config;
     public Transform pickupPivot;
     public Transform pickupBag;
-    public List<CropPickup> pickupsStack = new List<CropPickup>();
+    public List<CropPickup> pickupStack = new List<CropPickup>();
 
     private Vector3 pickupBagOriginalScale;
+    private bool isInsideSellPointTrigger = false;
 
     private void Start()
     {
         InitPickupCollider();
         pickupBagOriginalScale = pickupBag.transform.localScale;
         UpdatePickupBagScale();
-    }
-
-    public IEnumerator Pickup(CropPickup pickup)
-    {
-        pickupsStack.Add(pickup);
-        pickup.isPickingUpInProgress = true;
-        pickup.GetComponent<Rigidbody>().isKinematic = true;
-
-        bool isPickedUp = false;
-        while(!isPickedUp)
-        {
-            float distance = Vector3.Distance(transform.position, pickup.transform.position);
-
-            if (distance <= config.pickedUpDistance)
-            {
-                isPickedUp = true;
-                pickup.gameObject.transform.parent = transform;
-                pickup.gameObject.GetComponent<MeshRenderer>().enabled = false;
-                UpdatePickupBagScale();
-            }
-            else
-            {
-                pickup.transform.position = Vector3.MoveTowards(
-                    pickup.transform.position,
-                    transform.position,
-                    config.poolUpSpeed
-                );
-            }
-
-            yield return new WaitForFixedUpdate();
-        }
     }
 
     private void OnDrawGizmos()
@@ -66,9 +36,10 @@ public class CharacterPickupStack : MonoBehaviour
         {
             CropPickup cropPickup = other.GetComponent<CropPickup>();
             if (
-                pickupsStack.Count >= config.maxStackSize
+                pickupStack.Count >= config.maxStackSize
                 || cropPickup == null
                 || cropPickup.isPickingUpInProgress
+                || cropPickup.isSellingInProgress
             )
             {
                 return;
@@ -76,6 +47,87 @@ public class CharacterPickupStack : MonoBehaviour
 
             StartCoroutine(Pickup(cropPickup));
         }
+
+        if (other.CompareTag("SellPoint"))
+        {
+            if (pickupStack.Count == 0)
+            {
+                return;
+            }
+
+            isInsideSellPointTrigger = true;
+            StartCoroutine(SellCurrentPickups(other.gameObject));
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("SellPoint"))
+        {
+            isInsideSellPointTrigger = false;
+        }
+    }
+
+    private IEnumerator Pickup(CropPickup pickup)
+    {
+        pickupStack.Add(pickup);
+        pickup.isPickingUpInProgress = true;
+        pickup.GetComponent<Rigidbody>().isKinematic = true;
+
+        float distance;
+        do
+        {
+            pickup.transform.position = Vector3.MoveTowards(
+                pickup.transform.position,
+                transform.position,
+                config.poolUpSpeed
+            );
+
+            distance = Vector3.Distance(transform.position, pickup.transform.position);
+
+            yield return new WaitForFixedUpdate();
+        } while (distance > config.pickedUpDistance);
+
+        pickup.gameObject.transform.parent = transform;
+        pickup.gameObject.GetComponent<MeshRenderer>().enabled = false;
+        UpdatePickupBagScale();
+    }
+
+    private IEnumerator SellCurrentPickups(GameObject sellPoint)
+    {
+        while (pickupStack.Count > 0 && isInsideSellPointTrigger)
+        {
+            CropPickup pickup = pickupStack[pickupStack.Count - 1];
+            pickupStack.Remove(pickup);
+            UpdatePickupBagScale();
+            StartCoroutine(SellSinglePickup(pickup, sellPoint));
+
+            yield return new WaitForSeconds(config.sellingDelay);
+        }
+    }
+
+    private IEnumerator SellSinglePickup(CropPickup pickup, GameObject sellPoint)
+    {
+        pickup.isSellingInProgress = true;
+        pickup.GetComponent<Rigidbody>().isKinematic = true;
+        pickup.GetComponent<MeshRenderer>().enabled = true;
+        pickup.gameObject.transform.parent = null;
+
+        float distance;
+        do
+        {
+            pickup.transform.position = Vector3.MoveTowards(
+                pickup.transform.position,
+                sellPoint.transform.position,
+                config.sellingFlySpeed
+            );
+
+            distance = Vector3.Distance(pickup.transform.position, sellPoint.transform.position);
+
+            yield return new WaitForFixedUpdate();
+        } while (distance > 1.5f);
+
+        Destroy(pickup.gameObject);
     }
 
     private void InitPickupCollider()
@@ -87,11 +139,11 @@ public class CharacterPickupStack : MonoBehaviour
 
     private void UpdatePickupBagScale()
     {
-        pickupBag.GetComponent<MeshRenderer>().enabled = pickupsStack.Count > 0;
+        pickupBag.GetComponent<MeshRenderer>().enabled = pickupStack.Count > 0;
 
         pickupBag.transform.localScale = new Vector3(
             pickupBagOriginalScale.x,
-            pickupBagOriginalScale.y * pickupsStack.Count / config.maxStackSize,
+            pickupBagOriginalScale.y * pickupStack.Count / config.maxStackSize,
             pickupBagOriginalScale.z
         );
     }

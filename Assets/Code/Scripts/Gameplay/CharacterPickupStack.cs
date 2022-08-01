@@ -6,11 +6,16 @@ public class CharacterPickupStack : MonoBehaviour
 {
     public CharacterPickupConfig config;
     public Transform pickupPivot;
+    public Transform pickupBag;
     public List<CropPickup> pickupsStack = new List<CropPickup>();
+
+    private Vector3 pickupBagOriginalScale;
 
     private void Start()
     {
         InitPickupCollider();
+        pickupBagOriginalScale = pickupBag.transform.localScale;
+        UpdatePickupBagScale();
     }
 
     public IEnumerator Pickup(CropPickup pickup)
@@ -29,6 +34,7 @@ public class CharacterPickupStack : MonoBehaviour
                 isPickedUp = true;
                 pickup.gameObject.transform.parent = transform;
                 pickup.gameObject.GetComponent<MeshRenderer>().enabled = false;
+                UpdatePickupBagScale();
             }
             else
             {
@@ -77,5 +83,16 @@ public class CharacterPickupStack : MonoBehaviour
         SphereCollider sphereCollider = GetComponent<SphereCollider>();
         sphereCollider.center = pickupPivot.position - transform.position;
         sphereCollider.radius = config.poolUpRadius;
+    }
+
+    private void UpdatePickupBagScale()
+    {
+        pickupBag.GetComponent<MeshRenderer>().enabled = pickupsStack.Count > 0;
+
+        pickupBag.transform.localScale = new Vector3(
+            pickupBagOriginalScale.x,
+            pickupBagOriginalScale.y * pickupsStack.Count / config.maxStackSize,
+            pickupBagOriginalScale.z
+        );
     }
 }

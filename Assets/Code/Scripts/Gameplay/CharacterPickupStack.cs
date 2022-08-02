@@ -9,6 +9,8 @@ public class CharacterPickupStack : MonoBehaviour
     public Transform pickupBag;
     public List<CropPickup> pickupStack = new List<CropPickup>();
 
+    public bool IsFull => pickupStack.Count >= config.maxStackSize;
+
     private Vector3 pickupBagOriginalScale;
     private bool isInsideSellPointTrigger = false;
 

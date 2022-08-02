@@ -235,6 +235,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1104303476}
     m_Modifications:
+    - target: {fileID: 2210009789253807500, guid: 5afc0bdb739a74a4c8fa6eac167c4cbb,
+        type: 3}
+      propertyPath: sellPoint
+      value: 
+      objectReference: {fileID: 795071394}
     - target: {fileID: 3893294197879345259, guid: 5afc0bdb739a74a4c8fa6eac167c4cbb,
         type: 3}
       propertyPath: m_RootOrder
@@ -295,7 +300,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerPeasantGirl
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8882529009899433266, guid: 5afc0bdb739a74a4c8fa6eac167c4cbb,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 8882529009899433266, guid: 5afc0bdb739a74a4c8fa6eac167c4cbb, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 5afc0bdb739a74a4c8fa6eac167c4cbb, type: 3}
 --- !u!114 &21148426 stripped
 MonoBehaviour:

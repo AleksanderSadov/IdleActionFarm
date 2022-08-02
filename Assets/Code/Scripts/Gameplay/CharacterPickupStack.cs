@@ -142,8 +142,8 @@ public class CharacterPickupStack : MonoBehaviour
         pickupBag.GetComponent<MeshRenderer>().enabled = pickupStack.Count > 0;
 
         pickupBag.transform.localScale = new Vector3(
-            pickupBagOriginalScale.x,
-            pickupBagOriginalScale.y * pickupStack.Count / config.maxStackSize,
+            pickupBagOriginalScale.x * pickupStack.Count / config.maxStackSize,
+            pickupBagOriginalScale.y,
             pickupBagOriginalScale.z
         );
     }

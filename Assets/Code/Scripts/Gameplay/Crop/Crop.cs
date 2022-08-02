@@ -101,7 +101,5 @@ public class Crop : MonoBehaviour
             new Vector3(transform.position.x, transform.position.y + pickupSize.y / 2, transform.position.z),
             config.pickupPrefab.transform.rotation
         );
-
-        cropPickup.SetMaterial(GetComponent<MeshRenderer>().material);
     }
 }

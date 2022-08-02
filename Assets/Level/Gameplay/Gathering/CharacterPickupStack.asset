@@ -15,6 +15,6 @@ MonoBehaviour:
   poolUpRadius: 2
   poolUpSpeed: 0.1
   pickedUpDistance: 0.5
-  maxStackSize: 1
+  maxStackSize: 10
   sellingFlySpeed: 0.1
   sellingDelay: 0.2

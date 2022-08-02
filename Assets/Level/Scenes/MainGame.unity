@@ -10093,31 +10093,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 900511356}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1276166857 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8126725278553953001, guid: 6957704a0b23bf8458fb923be2ea1f6f,
-    type: 3}
-  m_PrefabInstance: {fileID: 8126725277548384288}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &1276166858 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8126725278553953002, guid: 6957704a0b23bf8458fb923be2ea1f6f,
     type: 3}
   m_PrefabInstance: {fileID: 8126725277548384288}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1276166859
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1276166857}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: acab9e90a55ea114c8995787b5592c57, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  characterPickupStack: {fileID: 732590426}
 --- !u!4 &1276590428 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6662174415517613310, guid: fbd797ed50eec144aa2058b77bcd1c87,
@@ -16796,6 +16777,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 280591134}
     m_Modifications:
+    - target: {fileID: 1276166859, guid: 6957704a0b23bf8458fb923be2ea1f6f, type: 3}
+      propertyPath: characterPickupStack
+      value: 
+      objectReference: {fileID: 732590426}
     - target: {fileID: 8126725277182063636, guid: 6957704a0b23bf8458fb923be2ea1f6f,
         type: 3}
       propertyPath: m_AnchorMax.x

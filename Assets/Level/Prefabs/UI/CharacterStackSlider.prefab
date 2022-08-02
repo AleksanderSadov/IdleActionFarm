@@ -364,4 +364,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acab9e90a55ea114c8995787b5592c57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  config: {fileID: 11400000, guid: 19912288636a25347bc28d921c609334, type: 2}
   characterPickupStack: {fileID: 0}

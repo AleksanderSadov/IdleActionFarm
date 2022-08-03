@@ -29,9 +29,11 @@ public class CropConfig : ScriptableObject
     [Tooltip("Selling cost when crop is gathered and delivered")]
     public int sellingCost;
 
-    [Header("Color")]
-    [Tooltip("Possible materials for crop. Single material will be choosed randomly for each crop")]
-    public Material[] materials;
+    [Header("Aging")]
+    [Tooltip("Materials showing crop aging process")]
+    public Material[] agingMaterials;
+    [Tooltip("Crop will switch to next material in even seconds interval")]
+    public float agingInterval = 5.0f;
 
     [Header("Wind animation")]
     public float windShakeSpeed = 3.0f;

@@ -17,8 +17,9 @@ public class Crop : MonoBehaviour
     public Vector3 grownedStateScale;
     public float timeGathered;
 
-    public UnityAction cropGathered;
+    public UnityAction cropGrowned;
     public UnityAction cropDamaged;
+    public UnityAction cropGathered;
 
     private void Update()
     {
@@ -55,6 +56,7 @@ public class Crop : MonoBehaviour
                 if (Time.time - timeGathered >= config.fullGrowTime)
                 {
                     state = CropState.Growned;
+                    cropGrowned?.Invoke();
                 }
                 break;
         }

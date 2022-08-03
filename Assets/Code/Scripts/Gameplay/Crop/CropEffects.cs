@@ -4,26 +4,27 @@ using static Crop;
 [RequireComponent(typeof(Crop))]
 public class CropEffects : MonoBehaviour
 {
-    public float windShakeRandomDelta;
-
     private Crop crop;
     private CropConfig config;
-
     private bool isShakingBackward = true;
     private Quaternion originalRotation;
+    private float timeLastAgeChange;
+    private float windShakeRandomDelta;
+    private int currentAgeIndex = 0;
 
     private void Start()
     {
         crop = GetComponent<Crop>();
         config = crop.config;
         originalRotation = transform.rotation;
+        timeLastAgeChange = Time.time;
 
         crop.grownedStateScale = config.grownedStateScale + config.randomScaleDeltaAmplitude * Random.Range(0f, 1f);
         windShakeRandomDelta = Random.Range(config.windShakeMinimumAmplitude, config.windShakeMaximumAmplitude);
-        SetRandomColor();
 
-        crop.cropGathered += OnCropGathered;
+        crop.cropGrowned += OnCropGrowned;
         crop.cropDamaged += OnCropDamaged;
+        crop.cropGathered += OnCropGathered;
     }
 
     private void Update()
@@ -33,8 +34,9 @@ public class CropEffects : MonoBehaviour
 
     private void OnDestroy()
     {
-        crop.cropGathered -= OnCropGathered;
+        crop.cropGrowned -= OnCropGrowned;
         crop.cropDamaged -= OnCropDamaged;
+        crop.cropGathered -= OnCropGathered;
     }
 
     private void UpdateCropEffects()
@@ -43,17 +45,29 @@ public class CropEffects : MonoBehaviour
         {
             case CropState.Growned:
                 ShakeLikeWind();
+                Aging();
                 break;
             case CropState.Sliced:
                 ShakeLikeWind();
+                Aging();
                 break;
         }
+    }
+
+    private void OnCropGrowned()
+    {
+        timeLastAgeChange = Time.time;
     }
 
     private void OnCropGathered()
     {
         transform.rotation = originalRotation;
-        SetRandomColor();
+
+        currentAgeIndex = 0;
+        if (config.agingMaterials.Length > 0)
+        {
+            crop.GetComponent<MeshRenderer>().material = config.agingMaterials[0];
+        }
     }
 
     private void OnCropDamaged()
@@ -86,8 +100,19 @@ public class CropEffects : MonoBehaviour
         }
     }
 
-    private void SetRandomColor()
+    private void Aging()
     {
-        crop.GetComponent<MeshRenderer>().material = config.materials[Random.Range(0, config.materials.Length)];
+        if (
+            config.agingMaterials.Length == 0
+            || currentAgeIndex >= config.agingMaterials.Length - 1
+            || Time.time - timeLastAgeChange < config.agingInterval
+        )
+        {
+            return;
+        }
+
+        currentAgeIndex++;
+        timeLastAgeChange = Time.time;
+        crop.GetComponent<MeshRenderer>().material = config.agingMaterials[currentAgeIndex];
     }
 }

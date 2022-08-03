@@ -4422,7 +4422,7 @@ Transform:
   m_Children:
   - {fileID: 773213753}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &515592039 stripped
 Transform:
@@ -9087,7 +9087,7 @@ Transform:
   m_Children:
   - {fileID: 21148428}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1107490223 stripped
 Transform:
@@ -13368,7 +13368,7 @@ Transform:
   - {fileID: 948294103}
   - {fileID: 280591134}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1740787049
 PrefabInstance:
@@ -15040,7 +15040,7 @@ Transform:
   - {fileID: 2132492998}
   - {fileID: 795071394}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1922789299
 PrefabInstance:
@@ -16112,7 +16112,7 @@ Transform:
   - {fileID: 863828987}
   - {fileID: 2117078337}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2085758460
 PrefabInstance:
@@ -16820,6 +16820,80 @@ Transform:
   m_Father: {fileID: 2132492998}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &5034757327833805565
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5034757327345092492, guid: db500867c26675d4ca8e7ed39c0e9685,
+        type: 3}
+      propertyPath: clipsList.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: d08ebcf05a5e3d737a292577fc84fb87, type: 3}
+    - target: {fileID: 5034757327345092493, guid: db500867c26675d4ca8e7ed39c0e9685,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5034757327345092493, guid: db500867c26675d4ca8e7ed39c0e9685,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5034757327345092493, guid: db500867c26675d4ca8e7ed39c0e9685,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5034757327345092493, guid: db500867c26675d4ca8e7ed39c0e9685,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5034757327345092493, guid: db500867c26675d4ca8e7ed39c0e9685,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5034757327345092493, guid: db500867c26675d4ca8e7ed39c0e9685,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5034757327345092493, guid: db500867c26675d4ca8e7ed39c0e9685,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5034757327345092493, guid: db500867c26675d4ca8e7ed39c0e9685,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5034757327345092493, guid: db500867c26675d4ca8e7ed39c0e9685,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5034757327345092493, guid: db500867c26675d4ca8e7ed39c0e9685,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5034757327345092493, guid: db500867c26675d4ca8e7ed39c0e9685,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5034757327345092498, guid: db500867c26675d4ca8e7ed39c0e9685,
+        type: 3}
+      propertyPath: m_Name
+      value: BackgroundMusic
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: db500867c26675d4ca8e7ed39c0e9685, type: 3}
 --- !u!1001 &5855340948442492024
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Grass
   m_EditorClassIdentifier: 
   grownedStateScale: {x: 6, y: 6, z: 6}
-  slicedStateScale: {x: 4, y: 4, z: 6}
+  slicedStateScale: {x: 6, y: 4, z: 6}
   growingStateScale: {x: 2, y: 2, z: 2}
   randomScaleDeltaAmplitude: {x: 0.5, y: 0.5, z: 0.5}
   fullGrowTime: 10

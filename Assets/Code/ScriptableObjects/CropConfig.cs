@@ -26,7 +26,7 @@ public class CropConfig : ScriptableObject
 
     [Header("Selling")]
     [Tooltip("Selling cost when crop is gathered and delivered")]
-    public float sellingCost;
+    public int sellingCost;
 
     [Header("Color")]
     [Tooltip("Possible materials for crop. Single material will be choosed randomly for each crop")]

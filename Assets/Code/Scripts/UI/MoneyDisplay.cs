@@ -10,9 +10,17 @@ public class MoneyDisplay : MonoBehaviour
     public RectTransform floatingCoinTarget;
     public TextMeshProUGUI moneyCountText;
 
+    private int currentMoneyDisplayed = 0;
+    private int targetMoneyToDisplay = 0;
+
     private void Start()
     {
         EventManager.AddListener<UpdateMoneyUIEvent>(StartFloatingCoinAnimation);
+    }
+
+    private void Update()
+    {
+        moneyCountText.text = currentMoneyDisplayed.ToString();
     }
 
     private void OnDestroy()
@@ -39,18 +47,26 @@ public class MoneyDisplay : MonoBehaviour
         uiFloatingCoin.pivot = floatingCoinTarget.pivot;
         uiFloatingCoin
             .DOAnchorPos(floatingCoinTarget.anchoredPosition, config.floatingCoinAnimationDuration)
-            .OnComplete(() => OnFloatingCoinAnimationComplete(uiFloatingCoin.gameObject, evt.newMoneyValue));
+            .OnComplete(() =>
+                {
+                    SmoothCurrentMoneyToNewValue(evt.newMoneyValue);
+                    Destroy(uiFloatingCoin.gameObject);
+                }
+            );
     }
 
-    private void OnFloatingCoinAnimationComplete(GameObject uiFloatingCoin, float newMoneyValue)
+    private void SmoothCurrentMoneyToNewValue(int newMoneyValue)
     {
-        float currentMoneyDisplayed = float.Parse(moneyCountText.text);
+        targetMoneyToDisplay = newMoneyValue;
 
-        if (currentMoneyDisplayed < newMoneyValue)
+        if (currentMoneyDisplayed < targetMoneyToDisplay)
         {
-            moneyCountText.text = newMoneyValue.ToString();
+            DOTween.To(
+                () => currentMoneyDisplayed,
+                x => currentMoneyDisplayed = x,
+                targetMoneyToDisplay,
+                config.moneyDisplayCountAnimationDuration
+            );
         }
-
-        Destroy(uiFloatingCoin);
     }
 }

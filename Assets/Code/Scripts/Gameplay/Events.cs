@@ -8,12 +8,12 @@ public static class Events
 
 public class CropSoldEvent : GameEvent
 {
-    public float sellingCost;
+    public int sellingCost;
     public GameObject sellPoint;
 }
 
 public class UpdateMoneyUIEvent : GameEvent
 {
-    public float newMoneyValue;
+    public int newMoneyValue;
     public GameObject sellPoint;
 }

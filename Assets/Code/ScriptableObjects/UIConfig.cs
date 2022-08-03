@@ -7,4 +7,6 @@ public class UIConfig : ScriptableObject
     public float stackSliderAnimationDuration = 1.0f;
     [Tooltip("Duration in seconds at which floating coin floats to money display")]
     public float floatingCoinAnimationDuration = 1.0f;
+    [Tooltip("Duration in seconds at which displayed money count smooth to new value")]
+    public float moneyDisplayCountAnimationDuration = 1.0f;
 }

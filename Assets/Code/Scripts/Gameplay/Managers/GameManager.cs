@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public float money = 0f;
+    public int money = 0;
 
     private void Start()
     {

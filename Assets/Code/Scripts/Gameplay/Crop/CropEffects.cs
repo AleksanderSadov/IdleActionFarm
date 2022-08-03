@@ -12,7 +12,7 @@ public class CropEffects : MonoBehaviour
     private float windShakeRandomDelta;
     private int currentAgeIndex = 0;
 
-    private void Start()
+    private void Awake()
     {
         crop = GetComponent<Crop>();
         config = crop.config;
@@ -21,7 +21,10 @@ public class CropEffects : MonoBehaviour
 
         crop.grownedStateScale = config.grownedStateScale + config.randomScaleDeltaAmplitude * Random.Range(0f, 1f);
         windShakeRandomDelta = Random.Range(config.windShakeMinimumAmplitude, config.windShakeMaximumAmplitude);
+    }
 
+    private void OnEnable()
+    {
         crop.cropGrowned += OnCropGrowned;
         crop.cropDamaged += OnCropDamaged;
         crop.cropGathered += OnCropGathered;
@@ -32,7 +35,7 @@ public class CropEffects : MonoBehaviour
         UpdateCropEffects();
     }
 
-    private void OnDestroy()
+    private void OnDisable()
     {
         crop.cropGrowned -= OnCropGrowned;
         crop.cropDamaged -= OnCropDamaged;

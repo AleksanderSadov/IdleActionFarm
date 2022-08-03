@@ -143,4 +143,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d83288909a036f43943641ef4c4f973, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  windShakeRandomDelta: 0

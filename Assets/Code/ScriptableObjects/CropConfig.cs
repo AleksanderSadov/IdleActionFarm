@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Audio;
 
 [CreateAssetMenu(fileName = "CropConfig", menuName = "ScriptableObjects/CropConfig", order = 1)]
 public class CropConfig : ScriptableObject
@@ -36,4 +37,9 @@ public class CropConfig : ScriptableObject
     public float windShakeSpeed = 3.0f;
     public float windShakeMinimumAmplitude = 2.0f;
     public float windShakeMaximumAmplitude = 4.0f;
+
+    [Header("Audio")]
+    public AudioMixerGroup slicedAudioGroup;
+    public AudioClip slicedAudioClip;
+    public float slicedAudioPitchRange = 0;
 }

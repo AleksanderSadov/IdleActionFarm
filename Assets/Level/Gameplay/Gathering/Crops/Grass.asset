@@ -30,3 +30,7 @@ MonoBehaviour:
   windShakeSpeed: 3
   windShakeMinimumAmplitude: 2
   windShakeMaximumAmplitude: 4
+  slicedAudioGroup: {fileID: 4865122862711958377, guid: ad5f961cf760ca144aef29cb97b8b6b5,
+    type: 2}
+  slicedAudioClip: {fileID: 8300000, guid: 49b52c3b77de49c4284d6a10a40e164e, type: 3}
+  slicedAudioPitchRange: 0.4

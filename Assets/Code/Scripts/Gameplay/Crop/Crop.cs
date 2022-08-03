@@ -18,6 +18,7 @@ public class Crop : MonoBehaviour
     public float timeGathered;
 
     public UnityAction cropGathered;
+    public UnityAction cropDamaged;
 
     private void Update()
     {
@@ -31,11 +32,13 @@ public class Crop : MonoBehaviour
         {
             case CropState.Growned:
                 state = CropState.Sliced;
+                cropDamaged?.Invoke();
                 break;
             case CropState.Sliced:
                 state = CropState.Gathered;
                 timeGathered = Time.time;
                 SpawnCropPickup();
+                cropDamaged?.Invoke();
                 cropGathered?.Invoke();
                 break;
         }

@@ -23,6 +23,7 @@ public class CropEffects : MonoBehaviour
         SetRandomColor();
 
         crop.cropGathered += OnCropGathered;
+        crop.cropDamaged += OnCropDamaged;
     }
 
     private void Update()
@@ -33,6 +34,7 @@ public class CropEffects : MonoBehaviour
     private void OnDestroy()
     {
         crop.cropGathered -= OnCropGathered;
+        crop.cropDamaged -= OnCropDamaged;
     }
 
     private void UpdateCropEffects()
@@ -52,6 +54,17 @@ public class CropEffects : MonoBehaviour
     {
         transform.rotation = originalRotation;
         SetRandomColor();
+    }
+
+    private void OnCropDamaged()
+    {
+        MiscAudio.PlayClipAtPoint(
+            config.slicedAudioClip,
+            transform.position,
+            1f,
+            config.slicedAudioPitchRange,
+            config.slicedAudioGroup
+        );
     }
 
     private void ShakeLikeWind()

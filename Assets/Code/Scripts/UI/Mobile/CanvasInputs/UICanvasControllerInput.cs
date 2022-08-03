@@ -27,7 +27,11 @@ namespace StarterAssets
         {
             starterAssetsInputs.SprintInput(virtualSprintState);
         }
-        
+
+        public void VirtualGatherInput(bool virtualGatherState)
+        {
+            starterAssetsInputs.GatherInput(virtualGatherState);
+        }
     }
 
 }

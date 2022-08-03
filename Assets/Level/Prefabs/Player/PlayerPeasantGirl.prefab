@@ -1101,7 +1101,10 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 67c8b33e424ccdc4486edf538ab91c5a, type: 3}
   - {fileID: 8300000, guid: 274649b0e221539409070ebf6c18918b, type: 3}
   - {fileID: 8300000, guid: a3194b8bbc96ef84fab1f98f4b7dae3e, type: 3}
-  playerSoundsAudioGroup: {fileID: -7422640982660540434, guid: 593f55fe217154743a4731b4fb77030d,
+  FootstepAudioGroup: {fileID: -7422640982660540434, guid: 593f55fe217154743a4731b4fb77030d,
+    type: 2}
+  SwingAudioClip: {fileID: 8300000, guid: 13182107f288fdc47a11f9216c8f062b, type: 3}
+  SwingAudioGroup: {fileID: -1223532068407474852, guid: 593f55fe217154743a4731b4fb77030d,
     type: 2}
   Grounded: 1
   GroundedOffset: -0.14

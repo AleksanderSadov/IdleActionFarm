@@ -46,7 +46,9 @@ namespace StarterAssets
         [Header("Audio")]
         public AudioClip LandingAudioClip;
         public AudioClip[] FootstepAudioClips;
-        public AudioMixerGroup playerSoundsAudioGroup;
+        public AudioMixerGroup FootstepAudioGroup;
+        public AudioClip SwingAudioClip;
+        public AudioMixerGroup SwingAudioGroup;
 
         [Header("Player Grounded")]
         [Tooltip("If the character is grounded or not. Not part of the CharacterController built in grounded check")]
@@ -419,7 +421,12 @@ namespace StarterAssets
                 if (FootstepAudioClips.Length > 0)
                 {
                     var index = Random.Range(0, FootstepAudioClips.Length);
-                    MiscAudio.PlayClipAtPoint(FootstepAudioClips[index], transform.TransformPoint(_controller.center), 1f, playerSoundsAudioGroup);
+                    MiscAudio.PlayClipAtPoint(
+                        FootstepAudioClips[index],
+                        transform.TransformPoint(_controller.center),
+                        1f,
+                        FootstepAudioGroup
+                    );
                 }
             }
         }
@@ -428,7 +435,25 @@ namespace StarterAssets
         {
             if (animationEvent.animatorClipInfo.weight > 0.5f)
             {
-                MiscAudio.PlayClipAtPoint(LandingAudioClip, transform.TransformPoint(_controller.center), 1f, playerSoundsAudioGroup);
+                MiscAudio.PlayClipAtPoint(
+                    LandingAudioClip,
+                    transform.TransformPoint(_controller.center),
+                    1f,
+                    FootstepAudioGroup
+                );
+            }
+        }
+
+        private void OnSwing(AnimationEvent animationEvent)
+        {
+            if (SwingAudioClip != null && SwingAudioGroup != null)
+            {
+                MiscAudio.PlayClipAtPoint(
+                    SwingAudioClip,
+                    transform.TransformPoint(_controller.center),
+                    1f,
+                    SwingAudioGroup
+                );
             }
         }
     }

@@ -22,6 +22,7 @@ MonoBehaviour:
   animationFullGrowingSpeed: 0.4
   pickupPrefab: {fileID: 5820958067646118964, guid: 10233dfa709a0ec40a8073b3af012b4b,
     type: 3}
+  sellingCost: 15
   materials:
   - {fileID: 2100000, guid: ce06999cdf191974cb632f1fb1206e4e, type: 2}
   - {fileID: 2100000, guid: 5de59386af6100742acb9491023bc063, type: 2}

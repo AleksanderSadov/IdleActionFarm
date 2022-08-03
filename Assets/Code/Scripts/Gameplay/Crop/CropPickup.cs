@@ -3,6 +3,7 @@ using UnityEngine;
 public class CropPickup : MonoBehaviour
 {
     public CropPickupConfig config;
+    public CropConfig cropSellingCostConfig;
     public bool isPickingUpInProgress = false;
     public bool isSellingInProgress = false;
 

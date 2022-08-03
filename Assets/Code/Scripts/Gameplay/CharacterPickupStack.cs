@@ -130,6 +130,10 @@ public class CharacterPickupStack : MonoBehaviour
             yield return new WaitForFixedUpdate();
         } while (distance > 1.5f);
 
+        CropSoldEvent cropSoldEvent = Events.CropSold;
+        cropSoldEvent.sellingCost = pickup.cropSellingCostConfig.sellingCost;
+        EventManager.Broadcast(cropSoldEvent);
+
         Destroy(pickup.gameObject);
     }
 

@@ -24,6 +24,10 @@ public class CropConfig : ScriptableObject
     [Tooltip("Prefab for pickup which appears after crop is gathered")]
     public CropPickup pickupPrefab;
 
+    [Header("Selling")]
+    [Tooltip("Selling cost when crop is gathered and delivered")]
+    public float sellingCost;
+
     [Header("Color")]
     [Tooltip("Possible materials for crop. Single material will be choosed randomly for each crop")]
     public Material[] materials;

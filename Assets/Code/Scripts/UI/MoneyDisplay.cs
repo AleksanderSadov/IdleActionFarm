@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class MoneyDisplay : MonoBehaviour
 {
+    public UIConfig config;
     public Camera cameraUI;
     public GameObject floatingCoinPrefab;
     public RectTransform floatingCoinTarget;
@@ -37,7 +38,7 @@ public class MoneyDisplay : MonoBehaviour
         uiFloatingCoin.anchorMax = floatingCoinTarget.anchorMax;
         uiFloatingCoin.pivot = floatingCoinTarget.pivot;
         uiFloatingCoin
-            .DOAnchorPos(floatingCoinTarget.anchoredPosition, 1f)
+            .DOAnchorPos(floatingCoinTarget.anchoredPosition, config.floatingCoinAnimationDuration)
             .OnComplete(() => OnFloatingCoinAnimationComplete(uiFloatingCoin.gameObject, evt.newMoneyValue));
     }
 

@@ -31,7 +31,7 @@ public class CharacterStackSlider : MonoBehaviour
            DOTween.Kill(slider);
         }
 
-        slider.DOValue(newValue, config.stackSliderSpeed);
+        slider.DOValue(newValue, config.stackSliderAnimationDuration);
         previousValue = newValue;
     }
 }

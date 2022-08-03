@@ -26,11 +26,6 @@ public class CharacterStackSlider : MonoBehaviour
             return;
         }
 
-        if (DOTween.IsTweening(slider))
-        {
-           DOTween.Kill(slider);
-        }
-
         slider.DOValue(newValue, config.stackSliderAnimationDuration);
         previousValue = newValue;
     }

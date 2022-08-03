@@ -53,6 +53,8 @@ public class MoneyDisplay : MonoBehaviour
             transform
         ).GetComponent<RectTransform>();
 
+        uiFloatingCoin.GetComponent<AudioSource>().Play();
+
         uiFloatingCoin.anchorMin = floatingCoinTarget.anchorMin;
         uiFloatingCoin.anchorMax = floatingCoinTarget.anchorMax;
         uiFloatingCoin.pivot = floatingCoinTarget.pivot;
@@ -61,7 +63,7 @@ public class MoneyDisplay : MonoBehaviour
             .OnComplete(() =>
                 {
                     SmoothCurrentMoneyToNewValue(evt.newMoneyValue);
-                    Destroy(uiFloatingCoin.gameObject);
+                    Destroy(uiFloatingCoin.gameObject, uiFloatingCoin.GetComponent<AudioSource>().clip.length);
                 }
             );
     }

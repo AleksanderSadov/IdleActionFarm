@@ -3,7 +3,13 @@ using UnityEngine.Audio;
 
 public static class MiscAudio
 {
-    public static void PlayClipAtPoint(AudioClip clip, Vector3 position, float volume = 1.0f, AudioMixerGroup group = null)
+    public static void PlayClipAtPoint(
+        AudioClip clip,
+        Vector3 position,
+        float volume = 1.0f,
+        float pitchRange = 0.0f,
+        AudioMixerGroup group = null
+    )
     {
         if (clip == null)
         {
@@ -17,6 +23,11 @@ public static class MiscAudio
         if (group != null)
         {
             audioSource.outputAudioMixerGroup = group;
+        }
+
+        if (pitchRange != 0)
+        {
+            audioSource.pitch = Random.Range(audioSource.pitch - pitchRange, audioSource.pitch + pitchRange);
         }
 
         audioSource.clip = clip;

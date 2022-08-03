@@ -49,6 +49,7 @@ namespace StarterAssets
         public AudioMixerGroup FootstepAudioGroup;
         public AudioClip SwingAudioClip;
         public AudioMixerGroup SwingAudioGroup;
+        public float SwingPitchRange = 0;
 
         [Header("Player Grounded")]
         [Tooltip("If the character is grounded or not. Not part of the CharacterController built in grounded check")]
@@ -425,6 +426,7 @@ namespace StarterAssets
                         FootstepAudioClips[index],
                         transform.TransformPoint(_controller.center),
                         1f,
+                        0f,
                         FootstepAudioGroup
                     );
                 }
@@ -439,6 +441,7 @@ namespace StarterAssets
                     LandingAudioClip,
                     transform.TransformPoint(_controller.center),
                     1f,
+                    0f,
                     FootstepAudioGroup
                 );
             }
@@ -452,6 +455,7 @@ namespace StarterAssets
                     SwingAudioClip,
                     transform.TransformPoint(_controller.center),
                     1f,
+                    SwingPitchRange,
                     SwingAudioGroup
                 );
             }

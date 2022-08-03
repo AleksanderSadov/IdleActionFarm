@@ -335,6 +335,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7466a7e6f00658749a0b817b6770c11e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  config: {fileID: 11400000, guid: 19912288636a25347bc28d921c609334, type: 2}
   cameraUI: {fileID: 0}
   floatingCoinPrefab: {fileID: 3856609839277190572, guid: 7b9682eac8a40fd42b33c9799d01e972,
     type: 3}

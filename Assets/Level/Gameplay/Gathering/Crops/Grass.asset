@@ -23,10 +23,10 @@ MonoBehaviour:
   pickupPrefab: {fileID: 5820958067646118964, guid: 10233dfa709a0ec40a8073b3af012b4b,
     type: 3}
   sellingCost: 15
-  agingMaterials:
-  - {fileID: 2100000, guid: ce06999cdf191974cb632f1fb1206e4e, type: 2}
-  - {fileID: 2100000, guid: 5de59386af6100742acb9491023bc063, type: 2}
-  - {fileID: 2100000, guid: 8e550ba839399d74ea17acb70d1a0131, type: 2}
+  agingColors:
+  - {r: 0.28627452, g: 0.50980395, b: 0.15294118, a: 0}
+  - {r: 0.50980395, g: 0.49411765, b: 0.15294118, a: 0}
+  - {r: 0.50980395, g: 0.34509805, b: 0.15294118, a: 0}
   agingInterval: 5
   windShakeSpeed: 3
   windShakeMinimumAmplitude: 2

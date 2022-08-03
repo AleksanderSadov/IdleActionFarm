@@ -30,9 +30,9 @@ public class CropConfig : ScriptableObject
     public int sellingCost;
 
     [Header("Aging")]
-    [Tooltip("Materials showing crop aging process")]
-    public Material[] agingMaterials;
-    [Tooltip("Crop will switch to next material in even seconds interval")]
+    [Tooltip("Colors showing crop aging process")]
+    public Color[] agingColors;
+    [Tooltip("Crop will tween to next color in even seconds interval")]
     public float agingInterval = 5.0f;
 
     [Header("Wind animation")]

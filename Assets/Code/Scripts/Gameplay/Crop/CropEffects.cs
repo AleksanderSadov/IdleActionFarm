@@ -1,3 +1,4 @@
+using DG.Tweening;
 using UnityEngine;
 using static Crop;
 
@@ -8,16 +9,16 @@ public class CropEffects : MonoBehaviour
     private CropConfig config;
     private bool isShakingBackward = true;
     private Quaternion originalRotation;
-    private float timeLastAgeChange;
     private float windShakeRandomDelta;
     private int currentAgeIndex = 0;
+    private Material cropMaterial;
 
     private void Awake()
     {
         crop = GetComponent<Crop>();
+        cropMaterial = crop.GetComponent<MeshRenderer>().material;
         config = crop.config;
         originalRotation = transform.rotation;
-        timeLastAgeChange = Time.time;
 
         crop.grownedStateScale = config.grownedStateScale + config.randomScaleDeltaAmplitude * Random.Range(0f, 1f);
         windShakeRandomDelta = Random.Range(config.windShakeMinimumAmplitude, config.windShakeMaximumAmplitude);
@@ -25,7 +26,6 @@ public class CropEffects : MonoBehaviour
 
     private void OnEnable()
     {
-        crop.cropGrowned += OnCropGrowned;
         crop.cropDamaged += OnCropDamaged;
         crop.cropGathered += OnCropGathered;
     }
@@ -37,7 +37,6 @@ public class CropEffects : MonoBehaviour
 
     private void OnDisable()
     {
-        crop.cropGrowned -= OnCropGrowned;
         crop.cropDamaged -= OnCropDamaged;
         crop.cropGathered -= OnCropGathered;
     }
@@ -57,19 +56,19 @@ public class CropEffects : MonoBehaviour
         }
     }
 
-    private void OnCropGrowned()
-    {
-        timeLastAgeChange = Time.time;
-    }
-
     private void OnCropGathered()
     {
         transform.rotation = originalRotation;
 
-        currentAgeIndex = 0;
-        if (config.agingMaterials.Length > 0)
+        if (config.agingColors.Length > 0)
         {
-            crop.GetComponent<MeshRenderer>().material = config.agingMaterials[0];
+            if (DOTween.IsTweening(cropMaterial))
+            {
+                DOTween.Kill(cropMaterial);
+            }
+
+            currentAgeIndex = 0;
+            cropMaterial.color = config.agingColors[0];
         }
     }
 
@@ -106,16 +105,15 @@ public class CropEffects : MonoBehaviour
     private void Aging()
     {
         if (
-            config.agingMaterials.Length == 0
-            || currentAgeIndex >= config.agingMaterials.Length - 1
-            || Time.time - timeLastAgeChange < config.agingInterval
+            config.agingColors.Length == 0
+            || currentAgeIndex >= config.agingColors.Length - 1
+            || DOTween.IsTweening(cropMaterial)
         )
         {
             return;
         }
 
         currentAgeIndex++;
-        timeLastAgeChange = Time.time;
-        crop.GetComponent<MeshRenderer>().material = config.agingMaterials[currentAgeIndex];
+        cropMaterial.DOColor(config.agingColors[currentAgeIndex], config.agingInterval);
     }
 }

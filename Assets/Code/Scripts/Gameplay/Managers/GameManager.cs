@@ -17,5 +17,10 @@ public class GameManager : MonoBehaviour
     private void OnCropSold(CropSoldEvent evt)
     {
         money += evt.sellingCost;
+
+        UpdateMoneyUIEvent updateMoneyUIEvent = Events.UpdateMoneyUIEvent;
+        updateMoneyUIEvent.newMoneyValue = money;
+        updateMoneyUIEvent.sellPoint = evt.sellPoint;
+        EventManager.Broadcast(updateMoneyUIEvent);
     }
 }

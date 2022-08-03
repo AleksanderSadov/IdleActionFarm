@@ -132,6 +132,7 @@ public class CharacterPickupStack : MonoBehaviour
 
         CropSoldEvent cropSoldEvent = Events.CropSold;
         cropSoldEvent.sellingCost = pickup.cropSellingCostConfig.sellingCost;
+        cropSoldEvent.sellPoint = sellPoint;
         EventManager.Broadcast(cropSoldEvent);
 
         Destroy(pickup.gameObject);

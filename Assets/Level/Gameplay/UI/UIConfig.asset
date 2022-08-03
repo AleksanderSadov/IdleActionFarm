@@ -12,3 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ba36379325410140a13f0771e80d17b, type: 3}
   m_Name: UIConfig
   m_EditorClassIdentifier: 
+  stackSliderAnimationDuration: 1
+  floatingCoinAnimationDuration: 0.3
+  moneyDisplayCountAnimationDuration: 0.3
+  moneyDisplayCountIncrementScale: 1.2

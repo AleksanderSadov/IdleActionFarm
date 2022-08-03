@@ -9,4 +9,6 @@ public class UIConfig : ScriptableObject
     public float floatingCoinAnimationDuration = 1.0f;
     [Tooltip("Duration in seconds at which displayed money count smooth to new value")]
     public float moneyDisplayCountAnimationDuration = 1.0f;
+    [Tooltip("Scale multiplier for money count text when money value increments")]
+    public float moneyDisplayCountIncrementScale = 1.2f;
 }

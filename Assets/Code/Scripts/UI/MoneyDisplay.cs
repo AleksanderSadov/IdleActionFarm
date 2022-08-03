@@ -12,14 +12,25 @@ public class MoneyDisplay : MonoBehaviour
 
     private int currentMoneyDisplayed = 0;
     private int targetMoneyToDisplay = 0;
+    private float moneyCountTextOriginalFontSize;
 
     private void Start()
     {
+        moneyCountTextOriginalFontSize = moneyCountText.fontSize;
         EventManager.AddListener<UpdateMoneyUIEvent>(StartFloatingCoinAnimation);
     }
 
     private void Update()
     {
+        if (currentMoneyDisplayed != targetMoneyToDisplay)
+        {
+            moneyCountText.fontSize = moneyCountTextOriginalFontSize * config.moneyDisplayCountIncrementScale;
+        }
+        else
+        {
+            moneyCountText.fontSize = moneyCountTextOriginalFontSize;
+        }
+
         moneyCountText.text = currentMoneyDisplayed.ToString();
     }
 

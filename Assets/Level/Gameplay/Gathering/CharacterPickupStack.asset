@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: CharacterPickupStack
   m_EditorClassIdentifier: 
   poolUpRadius: 2
-  poolUpSpeed: 0.1
+  poolUpSpeed: 0.2
   pickedUpDistance: 0.5
-  maxStackSize: 10
-  sellingFlySpeed: 0.1
-  sellingDelay: 0.2
+  maxStackSize: 40
+  sellingFlySpeed: 0.2
+  sellingDelay: 0.1

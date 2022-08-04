@@ -14,8 +14,7 @@ namespace StarterAssets
 
         public void OnPointerDown(PointerEventData eventData)
         {
-            bool isRightMouseInEditor = Application.isEditor && eventData.button != PointerEventData.InputButton.Right;
-            if (isRightMouseInEditor)
+            if (Application.isEditor && eventData.button != PointerEventData.InputButton.Right)
             {
                 return;
             }

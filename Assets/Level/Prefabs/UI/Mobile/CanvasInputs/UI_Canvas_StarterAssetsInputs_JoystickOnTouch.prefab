@@ -150,15 +150,20 @@ PrefabInstance:
       propertyPath: m_Name
       value: UI_Virtual_Button
       objectReference: {fileID: 0}
+    - target: {fileID: 4091757288130996202, guid: 9e55d9b4642484f41be20c69a9b48063,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5282399414295180930, guid: 9e55d9b4642484f41be20c69a9b48063,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 120
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 5282399414295180930, guid: 9e55d9b4642484f41be20c69a9b48063,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 120
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 5282399414295180930, guid: 9e55d9b4642484f41be20c69a9b48063,
         type: 3}
@@ -214,12 +219,22 @@ PrefabInstance:
     - target: {fileID: 8892224244125084019, guid: 9e55d9b4642484f41be20c69a9b48063,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 200
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 8892224244125084019, guid: 9e55d9b4642484f41be20c69a9b48063,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 200
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 8892224244125084019, guid: 9e55d9b4642484f41be20c69a9b48063,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8892224244125084019, guid: 9e55d9b4642484f41be20c69a9b48063,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8892224244125084019, guid: 9e55d9b4642484f41be20c69a9b48063,
         type: 3}
@@ -259,12 +274,12 @@ PrefabInstance:
     - target: {fileID: 8892224244125084019, guid: 9e55d9b4642484f41be20c69a9b48063,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -126
+      value: -42
       objectReference: {fileID: 0}
     - target: {fileID: 8892224244125084019, guid: 9e55d9b4642484f41be20c69a9b48063,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 120
+      value: 42
       objectReference: {fileID: 0}
     - target: {fileID: 8892224244125084019, guid: 9e55d9b4642484f41be20c69a9b48063,
         type: 3}
@@ -296,6 +311,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 368785656399260656}
     m_Modifications:
+    - target: {fileID: 191938513, guid: 6eb08bfc0fd869c47b796c42ada099da, type: 3}
+      propertyPath: joystickRange
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 191938513, guid: 6eb08bfc0fd869c47b796c42ada099da, type: 3}
       propertyPath: thresholdRatio
       value: 0.5
@@ -331,6 +350,14 @@ PrefabInstance:
     - target: {fileID: 191938513, guid: 6eb08bfc0fd869c47b796c42ada099da, type: 3}
       propertyPath: joystickThresholdEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 1480850143, guid: 6eb08bfc0fd869c47b796c42ada099da, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1480850143, guid: 6eb08bfc0fd869c47b796c42ada099da, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 1407806550736918862, guid: 6eb08bfc0fd869c47b796c42ada099da,
         type: 3}
@@ -370,12 +397,12 @@ PrefabInstance:
     - target: {fileID: 1407806550736918862, guid: 6eb08bfc0fd869c47b796c42ada099da,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 330
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 1407806550736918862, guid: 6eb08bfc0fd869c47b796c42ada099da,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 330
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 1407806550736918862, guid: 6eb08bfc0fd869c47b796c42ada099da,
         type: 3}
@@ -415,12 +442,12 @@ PrefabInstance:
     - target: {fileID: 1407806550736918862, guid: 6eb08bfc0fd869c47b796c42ada099da,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 219
+      value: 51
       objectReference: {fileID: 0}
     - target: {fileID: 1407806550736918862, guid: 6eb08bfc0fd869c47b796c42ada099da,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 207
+      value: 52
       objectReference: {fileID: 0}
     - target: {fileID: 1407806550736918862, guid: 6eb08bfc0fd869c47b796c42ada099da,
         type: 3}
@@ -441,6 +468,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: UI_Virtual_Joystick_Move
+      objectReference: {fileID: 0}
+    - target: {fileID: 3199668076469712368, guid: 6eb08bfc0fd869c47b796c42ada099da,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 3199668076469712368, guid: 6eb08bfc0fd869c47b796c42ada099da,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 50
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6eb08bfc0fd869c47b796c42ada099da, type: 3}

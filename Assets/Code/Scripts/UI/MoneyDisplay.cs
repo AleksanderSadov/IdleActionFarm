@@ -1,6 +1,7 @@
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MoneyDisplay : MonoBehaviour
 {
@@ -58,11 +59,13 @@ public class MoneyDisplay : MonoBehaviour
         uiFloatingCoin.anchorMin = floatingCoinTarget.anchorMin;
         uiFloatingCoin.anchorMax = floatingCoinTarget.anchorMax;
         uiFloatingCoin.pivot = floatingCoinTarget.pivot;
+        uiFloatingCoin.DOSizeDelta(floatingCoinTarget.sizeDelta, config.floatingCoinAnimationDuration);
         uiFloatingCoin
             .DOAnchorPos(floatingCoinTarget.anchoredPosition, config.floatingCoinAnimationDuration)
             .OnComplete(() =>
                 {
                     SmoothCurrentMoneyToNewValue(evt.newMoneyValue);
+                    uiFloatingCoin.GetComponent<Image>().enabled = false;
                     Destroy(uiFloatingCoin.gameObject, uiFloatingCoin.GetComponent<AudioSource>().clip.length);
                 }
             );

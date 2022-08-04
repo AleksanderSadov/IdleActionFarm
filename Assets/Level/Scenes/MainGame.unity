@@ -2322,12 +2322,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 2
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
-  m_ScaleFactor: 0.7
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ScaleFactor: 1
+  m_ReferenceResolution: {x: 1080, y: 2400}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 0.5
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -7541,14 +7541,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1737334135}
     m_Modifications:
-    - target: {fileID: 1210468103, guid: 7b6b0040f94109a41be21f4cf9433be5, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -0.0078125
-      objectReference: {fileID: 0}
-    - target: {fileID: 1210468103, guid: 7b6b0040f94109a41be21f4cf9433be5, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 368785656399260656, guid: 7b6b0040f94109a41be21f4cf9433be5,
         type: 3}
       propertyPath: m_Pivot.x
@@ -7663,31 +7655,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: UI_Canvas_StarterAssetsInputs_JoystickOnTouch
-      objectReference: {fileID: 0}
-    - target: {fileID: 6101839076451536833, guid: 7b6b0040f94109a41be21f4cf9433be5,
-        type: 3}
-      propertyPath: m_ScaleFactor
-      value: 0.6
-      objectReference: {fileID: 0}
-    - target: {fileID: 6101839076451536833, guid: 7b6b0040f94109a41be21f4cf9433be5,
-        type: 3}
-      propertyPath: m_UiScaleMode
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6101839076451536833, guid: 7b6b0040f94109a41be21f4cf9433be5,
-        type: 3}
-      propertyPath: m_ScreenMatchMode
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6101839076451536833, guid: 7b6b0040f94109a41be21f4cf9433be5,
-        type: 3}
-      propertyPath: m_ReferenceResolution.x
-      value: 1600
-      objectReference: {fileID: 0}
-    - target: {fileID: 6101839076451536833, guid: 7b6b0040f94109a41be21f4cf9433be5,
-        type: 3}
-      propertyPath: m_ReferenceResolution.y
-      value: 600
       objectReference: {fileID: 0}
     - target: {fileID: 8518067143298778766, guid: 7b6b0040f94109a41be21f4cf9433be5,
         type: 3}
@@ -17528,12 +17495,12 @@ PrefabInstance:
     - target: {fileID: 5855340949010073539, guid: 3fb193f8b71677546884d86cd06d37f3,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -400
+      value: -428
       objectReference: {fileID: 0}
     - target: {fileID: 5855340949010073539, guid: 3fb193f8b71677546884d86cd06d37f3,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -301
+      value: -540
       objectReference: {fileID: 0}
     - target: {fileID: 5855340949010073539, guid: 3fb193f8b71677546884d86cd06d37f3,
         type: 3}
@@ -17637,11 +17604,6 @@ PrefabInstance:
       propertyPath: characterPickupStack
       value: 
       objectReference: {fileID: 732590426}
-    - target: {fileID: 8126725277182063636, guid: 6957704a0b23bf8458fb923be2ea1f6f,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8126725278553953001, guid: 6957704a0b23bf8458fb923be2ea1f6f,
         type: 3}
       propertyPath: m_Name
@@ -17730,12 +17692,12 @@ PrefabInstance:
     - target: {fileID: 8126725278553953002, guid: 6957704a0b23bf8458fb923be2ea1f6f,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 80
+      value: 78.6
       objectReference: {fileID: 0}
     - target: {fileID: 8126725278553953002, guid: 6957704a0b23bf8458fb923be2ea1f6f,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -23
+      value: -257.1
       objectReference: {fileID: 0}
     - target: {fileID: 8126725278553953002, guid: 6957704a0b23bf8458fb923be2ea1f6f,
         type: 3}
